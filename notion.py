@@ -32,15 +32,11 @@ def consultaNotion():
     tareas = []
 
     if response.status_code != 200:
-        print(response.status_code)
-        print(response.text)
-
         tareas.append("Error: %s" % str(response.status_code) )
 
     else:
         consulta = response.json()
         for resultado in consulta["results"]:
-            print(resultado["properties"]["Titulo"]["title"][0]["text"]["content"])
             tareas.append(resultado["properties"]["Titulo"]["title"][0]["text"]["content"])
 
     return tareas
@@ -93,7 +89,6 @@ def tareasHoy(update, context):
         update.message.reply_text("Error: %s" % str(res.status_code))
 
     consulta = res.json()
-    print(consulta)
 
     for resultado in consulta["results"]:
         update.message.reply_text(resultado["properties"]["Titulo"]["title"][0]["text"]["content"])
