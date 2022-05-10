@@ -1,0 +1,11 @@
+version: '3'
+services:
+ notion-bot:
+  build: .
+  env_file:
+    - .env  
+  environment:
+    TELEGRAM_TOKEN: ${TELEGRAM_TOKEN}
+    NOTION_TOKEN: ${NOTION_TOKEN}
+  volumes:
+   - .:/code
